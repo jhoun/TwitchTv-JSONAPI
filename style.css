@@ -1,0 +1,30 @@
+.table {
+  display: inline-block;
+  width: 1000px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.channel {
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+  background-color: red;
+}
+
+.channel_data {
+  text-align: left;
+}
+
+.status {
+  text-align: center;
+  display: inline-block;
+  background-color: blue;
+  width: 600px;
+}
+
+.status_data {
+  text-align: left;
+}

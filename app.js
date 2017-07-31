@@ -1,29 +1,30 @@
 var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
-var channel = "<ul>";
-var status = "<ul>";
 
 users.forEach(function(users){
   $.ajax({
     url: `https://wind-bow.gomix.me/twitch-api/streams/${users}?callback=?`,
     dataType: "jsonp",
     success:function(result){
+      var status;
       if (result.stream === null || result.stream === undefined){
-        status += `<li>Offline</li>`;
+        status = `Offline`;
       } else {
-        status += `<li>${result.stream.channel.status}</li>`;
+        status = result.stream.channel.status;
       }
+      $.ajax({
+        url: `https://wind-bow.gomix.me/twitch-api/channels/${users}?callback=?`,
+        dataType: "jsonp",
+        success:function(result){
+          var logo = result.logo !== null ? result.logo : 'http://i.imgur.com/bdrXyHv.png';
+          var html = `<div class="channel_container">
+                    <img src=${logo}>
+                    <div class="name"><a href='${result.url}'><div class="inner name">${result.name}</div></a></div>
+                    <div class="inner status">${status}</div>
+                    </div>`;
+          $("#display").append(html);
+        }
+      })
+    }
+  })
 
-      $(".status_data").html(status + "</ul>");
-    }
-  })
-  $.ajax({
-    url: `https://wind-bow.gomix.me/twitch-api/channels/${users}?callback=?`,
-    dataType: "jsonp",
-    success:function(result){
-      console.log('result.stream: ', result);
-      channel += `<a href='${result.url}'><li>${result.name}</li></a>`;
-      console.log('channel: ', channel);
-      $(".channel_data").html(channel + "</ul>");
-    }
-  })
 })

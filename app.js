@@ -17,8 +17,8 @@ users.forEach(function(users){
         success:function(result){
           var logo = result.logo !== null ? result.logo : 'http://i.imgur.com/bdrXyHv.png';
           var html = `<div class="channel_container">
-                    <img src=${logo}>
-                    <div class="name"><a href='${result.url}'><div class="inner name">${result.name}</div></a></div>
+                    <div class="inner image"><img src=${logo}></div>
+                    <div class="inner name"><a href='${result.url}'><div>${result.name}</div></a></div>
                     <div class="inner status">${status}</div>
                     </div>`;
           $("#display").append(html);

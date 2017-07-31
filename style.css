@@ -16,16 +16,12 @@ a {
   text-decoration: none;
 }
 
-img {
-  width: 50px;
-  height: 50px;
-}
 
 #container {
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
-  text-align: center;
+  width: 800px;
+  text-align: left;
 }
 
 .channel_container{
@@ -35,15 +31,21 @@ img {
 }
 
 .inner {
+  display: inline-block;
+}
 
+.image img {
+  width: 50px;
+  height: 50px;
 }
 
 .name {
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 1.2em;
+  margin-left: 20px;
 }
 
 .status {
-
+ margin-left: 25px;
 }
